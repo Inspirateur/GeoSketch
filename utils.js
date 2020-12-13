@@ -26,6 +26,7 @@ function lcm(numbers) {
 }
 
 function frac(d) {
+	d = Math.abs(d);
 	if(d === Math.floor(d)) return [d, 1];
 	let tens = Math.pow(10, d.toString().length - 2);
 	let f = [tens*d, tens];
