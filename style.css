@@ -1,0 +1,32 @@
+body {
+    --whiter: #DDD;
+    --white: #DADADA;
+    --light-gray: #404049;
+    --gray: #35353A;
+    --dark-gray: #28282E;
+    --black: #111;
+    --accent: #5CB700;
+    background: var(--dark-gray);
+    font-family: sans-serif;
+    width: 90%;
+    margin: auto;
+    color: var(--whiter);
+}
+
+canvas {
+    background: var(--black);
+    width: 1080px;
+    height: 720px;
+}
+
+input {
+    background: var(--light-gray);
+    border: thin solid dimgray;
+    border-radius: 2px;
+    padding-left: 8px;
+    margin-right: 20px;
+    line-height: 32px;
+    caret-color: white;
+    color: white;
+    width: 75px;
+}
