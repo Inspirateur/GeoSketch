@@ -17,6 +17,7 @@ canvas {
     background: var(--black);
     width: 1080px;
     height: 720px;
+    margin-bottom: 15px;
 }
 
 input {
@@ -29,4 +30,10 @@ input {
     caret-color: white;
     color: white;
     width: 75px;
+}
+
+#drawer {
+    width: 25px;
+    height: 25px;
+    vertical-align: top;
 }

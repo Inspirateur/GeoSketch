@@ -1,6 +1,7 @@
 let r1, r2, r3;
 let rs1, rs2, rs3;
 let l1, l2, l3;
+let drawer = true;
 let canvas = document.getElementById("canvas");
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
@@ -12,6 +13,11 @@ c.lineWidth = 3;
 let cyclelen;
 let points;
 let mstick = 20;
+
+
+function check_drawer() {
+	drawer = document.getElementById("drawer").checked;
+}
 
 
 function restart() {
@@ -59,20 +65,22 @@ function update() {
 		points.push(p3);
 	}
 	// draw the drawer
-	let r = Math.random()*255;
-	if(points.length <= cyclelen) {
-		c.strokeStyle = "#AAA";
-	} else {
-		c.strokeStyle = "#172";
+	if(drawer) {
+		let r = Math.random()*255;
+		if(points.length <= cyclelen) {
+			c.strokeStyle = "#AAA";
+		} else {
+			c.strokeStyle = "#172";
+		}
+		c.beginPath();
+		c.moveTo(center[0], center[1]);
+		c.lineTo(p1[0], p1[1]);
+		c.lineTo(p2[0], p2[1]);
+		c.lineTo(p3[0], p3[1]);
+		c.moveTo(p3[0], p3[1]);
+		c.closePath();
+		c.stroke();
 	}
-	c.beginPath();
-	c.moveTo(center[0], center[1]);
-	c.lineTo(p1[0], p1[1]);
-	c.lineTo(p2[0], p2[1]);
-	c.lineTo(p3[0], p3[1]);
-	c.moveTo(p3[0], p3[1]);
-	c.closePath();
-	c.stroke();
 
 	// draw the lines
 	if(points.length > 0) {
