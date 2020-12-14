@@ -4,13 +4,15 @@ let l1 = 1/2;
 let l2 = 1/3;
 let l3 = 1/6;
 let drawer = true;
+let taskid = null;
 let canvas = document.getElementById("canvas");
 let s;
 let c = canvas.getContext("2d");
 c.lineWidth = 3;
 let cyclelen;
 let points;
-let mstick = 50;
+let unit = 360;
+let mstick = 10;
 window.addEventListener('resize', resize);
 
 
@@ -27,6 +29,9 @@ function resize() {
 }
 
 function restart() {
+	if(taskid !== null) {
+		window.clearInterval(taskid);
+	}
 	rs1 = parseFloat(document.getElementById("rs1").value);
 	rs2 = parseFloat(document.getElementById("rs2").value);
 	rs3 = parseFloat(document.getElementById("rs3").value);
@@ -37,7 +42,7 @@ function restart() {
 	cyclelen = compute_cyclelen([rs1, rs2, rs3]);
 	console.log(cyclelen);
 	points = [];
-	window.setInterval(update, mstick);
+	taskid = window.setInterval(update, mstick);
 }
 
 function compute_cyclelen(r_speeds) {
@@ -52,7 +57,7 @@ function compute_cyclelen(r_speeds) {
 	let d = gcd(rs_num)/lcm(rs_dem);
 	console.log(d);
 	// compute the amount of iteration needed to cycle
-	return 360/d;
+	return unit/d;
 }
 
 function update() {
@@ -99,7 +104,7 @@ function update() {
 	}
 
 	// update the angles
-	r1 = (r1 + 2*Math.PI*rs1/360) % (2*Math.PI);
-	r2 = (r2 + 2*Math.PI*rs2/360) % (2*Math.PI);
-	r3 = (r3 + 2*Math.PI*rs3/360) % (2*Math.PI);
+	r1 = (r1 + 2*Math.PI*rs1/unit) % (2*Math.PI);
+	r2 = (r2 + 2*Math.PI*rs2/unit) % (2*Math.PI);
+	r3 = (r3 + 2*Math.PI*rs3/unit) % (2*Math.PI);
 }
