@@ -3,10 +3,7 @@ let rs1, rs2, rs3;
 let l1, l2, l3;
 let drawer = true;
 let canvas = document.getElementById("canvas");
-canvas.width = canvas.clientWidth;
-canvas.height = canvas.clientHeight;
-let w = canvas.width;
-let h = canvas.height;
+let w, h;
 let center;
 let c = canvas.getContext("2d");
 c.lineWidth = 3;
@@ -20,6 +17,18 @@ function check_drawer() {
 }
 
 
+function resize() {
+	canvas.width = canvas.clientWidth;
+	canvas.height = canvas.clientHeight;
+	w = canvas.width;
+	h = canvas.height;
+	let s = h/2.1;
+	l1 = s/2;
+	l2 = s/3;
+	l3 = s/6;
+	center = [w/2+.5, h/2+.5];
+}
+
 function restart() {
 	rs1 = parseFloat(document.getElementById("rs1").value);
 	rs2 = parseFloat(document.getElementById("rs2").value);
@@ -27,13 +36,9 @@ function restart() {
 	r1 = 0;
 	r2 = 0;
 	r3 = 0;
-	let s = h/2.1;
-	l1 = s/2;
-	l2 = s/3;
-	l3 = s/6;
+	resize()
 	cyclelen = compute_cyclelen([rs1, rs2, rs3]);
 	console.log(cyclelen);
-	center = [w/2+.5, h/2+.5];
 	points = [];
 	window.setInterval(update, mstick);
 }
