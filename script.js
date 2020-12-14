@@ -22,7 +22,7 @@ function resize() {
 	canvas.height = canvas.clientHeight;
 	w = canvas.width;
 	h = canvas.height;
-	let s = h/2.1;
+	let s = Math.min(w, h)/2.1;
 	l1 = s/2;
 	l2 = s/3;
 	l3 = s/6;
