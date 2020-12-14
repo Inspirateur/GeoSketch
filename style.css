@@ -9,18 +9,8 @@ body {
     background: var(--dark-gray);
     font-family: Roboto, sans-serif;
     margin: auto;
+    width: 70%;
     color: var(--whiter);
-}
-
-@media (max-width:1024px) {
-    body { width: 100%;}
-    h1 { margin-left: 10px;}
-    #header img { margin-right: 10px;}
-    input { margin-left: 10px;}
-}
-
-@media (min-width:1025px) {
-    body { width: 70%;}
 }
 
 h1 {
@@ -67,4 +57,13 @@ input {
     width: 25px;
     height: 25px;
     vertical-align: top;
+}
+
+@media (max-width:1024px) {
+    body { width: 100%;}
+    h1 { margin-left: 10px; font-size: 36px; margin-bottom: 10px; margin-top: 10px;}
+    #header img { margin-right: 10px; margin-top: 10px}
+    input { margin-left: 10px; font-size: 24px; width: 120px; height: 40px}
+    #drawer {width: 40px; height: 40px}
+    label {font-size: 20px}
 }
