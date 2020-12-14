@@ -35,6 +35,7 @@ input {
     caret-color: white;
     color: white;
     width: 75px;
+    font-size: 18px;
 }
 
 #drawer {
