@@ -10,7 +10,7 @@ let c = canvas.getContext("2d");
 c.lineWidth = 3;
 let cyclelen;
 let points;
-let mstick = 20;
+let mstick = 50;
 window.addEventListener('resize', resize);
 
 
