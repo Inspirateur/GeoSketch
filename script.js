@@ -1,32 +1,29 @@
 let r1, r2, r3;
 let rs1, rs2, rs3;
-let l1, l2, l3;
+let l1 = 1/2;
+let l2 = 1/3;
+let l3 = 1/6;
 let drawer = true;
 let canvas = document.getElementById("canvas");
-let w, h;
-let center;
+let s;
 let c = canvas.getContext("2d");
 c.lineWidth = 3;
 let cyclelen;
 let points;
 let mstick = 20;
+window.addEventListener('resize', resize);
 
 
 function check_drawer() {
 	drawer = document.getElementById("drawer").checked;
 }
 
-
 function resize() {
 	canvas.width = canvas.clientWidth;
 	canvas.height = canvas.clientHeight;
-	w = canvas.width;
-	h = canvas.height;
-	let s = Math.min(w, h)/2.1;
-	l1 = s/2;
-	l2 = s/3;
-	l3 = s/6;
-	center = [w/2+.5, h/2+.5];
+	s = Math.min(canvas.width, canvas.height)/2.1;
+	c.translate(canvas.width/2, canvas.height/2)
+	console.log(s);
 }
 
 function restart() {
@@ -36,13 +33,12 @@ function restart() {
 	r1 = 0;
 	r2 = 0;
 	r3 = 0;
-	resize()
+	resize();
 	cyclelen = compute_cyclelen([rs1, rs2, rs3]);
 	console.log(cyclelen);
 	points = [];
 	window.setInterval(update, mstick);
 }
-
 
 function compute_cyclelen(r_speeds) {
 	// find the biggest real d such that every rs/d is an integer
@@ -60,9 +56,11 @@ function compute_cyclelen(r_speeds) {
 }
 
 function update() {
-	c.clearRect(0, 0, w, h);
+	c.clearRect(-canvas.width, -canvas.height, canvas.width*2, canvas.height*2);
+	// the points are dynamically translated and scaled each time (in case they change)
+	// all the points are stored in a coordinate agnostic to s w and h
 	// compute the position of the drawer
-	let p1 = [center[0]+Math.cos(r1)*l1, center[1]+Math.sin(r1)*l1];
+	let p1 = [Math.cos(r1)*l1, Math.sin(r1)*l1];
 	let p2 = [p1[0]+Math.cos(r2)*l2, p1[1]+Math.sin(r2)*l2];
 	let p3 = [p2[0]+Math.cos(r3)*l3, p2[1]+Math.sin(r3)*l3];
 	// add new points until we cycle
@@ -78,11 +76,11 @@ function update() {
 			c.strokeStyle = "#172";
 		}
 		c.beginPath();
-		c.moveTo(center[0], center[1]);
-		c.lineTo(p1[0], p1[1]);
-		c.lineTo(p2[0], p2[1]);
-		c.lineTo(p3[0], p3[1]);
-		c.moveTo(p3[0], p3[1]);
+		c.moveTo(0, 0);
+		c.lineTo(p1[0]*s, p1[1]*s);
+		c.lineTo(p2[0]*s, p2[1]*s);
+		c.lineTo(p3[0]*s, p3[1]*s);
+		c.moveTo(p3[0]*s, p3[1]*s);
 		c.closePath();
 		c.stroke();
 	}
@@ -91,11 +89,11 @@ function update() {
 	if(points.length > 0) {
 		c.strokeStyle = "#FFF";
 		c.beginPath()
-		c.moveTo(points[0][0], points[0][1]);
+		c.moveTo(points[0][0]*s, points[0][1]*s);
 		for(let i=1; i<points.length; i++) {
-			c.lineTo(points[i][0], points[i][1]);
+			c.lineTo(points[i][0]*s, points[i][1]*s);
 		}
-		c.moveTo(points[points.length-1][0], points[points.length-1][1]);
+		c.moveTo(points[points.length-1][0]*s, points[points.length-1][1]*s);
 		c.closePath();
 		c.stroke();
 	}
