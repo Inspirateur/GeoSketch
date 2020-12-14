@@ -36,7 +36,7 @@ h1 {
 canvas {
     background: var(--black);
     width: 100%;
-    height: 720px;
+    height: 80vh;
     margin-bottom: 15px;
 }
 
@@ -60,10 +60,11 @@ input {
 }
 
 @media (max-width:1024px) {
-    body { width: 100%;}
+    body { width: 100vw;}
     h1 { margin-left: 10px; font-size: 36px; margin-bottom: 10px; margin-top: 10px;}
     #header img { margin-right: 10px; margin-top: 10px}
     input { margin-left: 10px; font-size: 24px; width: 120px; height: 40px}
     #drawer {width: 40px; height: 40px}
     label {font-size: 20px}
+    canvas {width: 100vw}
 }
