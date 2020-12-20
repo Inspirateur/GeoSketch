@@ -59,6 +59,20 @@ input {
     vertical-align: top;
 }
 
+button {
+    height: 40px;
+    background: var(--black);
+    color: var(--whiter);
+    font-size: 18px;
+    border-radius: 5px;
+    border-color: var(--dark-gray);
+}
+
+button:hover {
+    cursor: pointer;
+    background: var(--dark-gray);
+}
+
 @media (max-width:1024px) {
     body { width: 100vw;}
     h1 { margin-left: 10px; font-size: 36px; margin-bottom: 10px; margin-top: 10px;}

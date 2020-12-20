@@ -33,3 +33,44 @@ function frac(d) {
 	let div = _gcd(f[0], f[1]);
 	return [f[0]/div, f[1]/div];
 }
+
+function randint(a, b) {
+	return Math.floor(Math.random()*(b-a)+a);
+}
+
+function sample(numbers, k) {
+	let copy = [];
+	for(let i=0; i<numbers.length; i++) {
+		copy.push(numbers[i]);
+	}
+	let s = [];
+	while (copy.length > 0 && s.length < k) {
+		let i = randint(0, copy.length);
+		s.push(copy[i]);
+		copy.splice(i, 1);
+	}
+	return s;
+}
+
+function shuffle(array) {
+	let currentIndex = array.length, temporaryValue, randomIndex;
+
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+}
+
+function dec(a, n) {
+	let e = Math.pow(10, n);
+	return Math.floor(a*e)/e;
+}

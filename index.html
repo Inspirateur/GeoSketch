@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>GeoSketch</title>
 </head>
-<body onload="restart()">
+<body onload="random_nice()">
 
 <div id="header">
 	<h1>GeoSketch</h1>
@@ -28,6 +28,7 @@
 	<label id="drawer-label">Display drawer
 		<input id="drawer" type="checkbox" checked="checked" onchange="check_drawer()">
 	</label>
+	<button onclick="random_nice()">Random !</button>
 </div>
 <script src="utils.js"></script>
 <script src="script.js"></script>
