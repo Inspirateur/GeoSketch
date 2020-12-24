@@ -24,7 +24,6 @@ function resize() {
 	canvas.height = canvas.clientHeight;
 	s = Math.min(canvas.width, canvas.height)/2.1;
 	c.translate(canvas.width/2, canvas.height/2)
-	console.log(s);
 }
 
 function restart() {
@@ -46,10 +45,9 @@ function restart() {
 		sum += ls[ls.length-1];
 	}
 
-	console.log("length sum", sum);
 	resize();
 	cyclelen = compute_cyclelen(rspeeds);
-	console.log(cyclelen);
+	console.log("iterations", cyclelen);
 	points = [];
 	taskid = window.setInterval(update, mstick);
 }
@@ -96,7 +94,6 @@ function compute_cyclelen(r_speeds) {
 		rs_dem.push(f[1]);
 	}
 	let d = gcd(rs_num)/lcm(rs_dem);
-	console.log(d);
 	// compute the amount of iteration needed to cycle
 	return unit/d;
 }
