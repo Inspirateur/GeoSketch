@@ -33,12 +33,20 @@ function restart() {
 	}
 	rspeeds = [];
 	rs = [];
-	ls = []
+	ls = [];
+	let norm = 1-1/(2*n);
+	let sum = 0.;
 	for(let i=0; i<n; i++) {
 		rspeeds.push(document.getElementById(`rs${i+1}`).value);
 		rs.push(0);
 		ls.push(1/(2*(i+1)));
+		if(i > 0) {
+			ls[ls.length-1] /= norm;
+		}
+		sum += ls[ls.length-1];
 	}
+
+	console.log("length sum", sum);
 	resize();
 	cyclelen = compute_cyclelen(rspeeds);
 	console.log(cyclelen);
